@@ -1,0 +1,36 @@
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+public class Player {
+
+	public static void main(String[] args) {
+		int life = 3;
+		int xSpeed = 7;
+		int ySpeed = 10;
+		
+	}
+	
+	public class KeyInput extends KeyAdapter{
+  
+  // for the keyevent section of the code 'key == A' and the like are test and maybe removed as needed
+		
+		public void keyPressed(KeyEvent e) {
+			int key = e.getKeyCode();
+			
+			if (key ==  KeyEvent.VK_LEFT || key == 'A') {
+				p.setX(p.getX() - xSpeed);	
+			}
+			if (key ==  KeyEvent.VK_RIGHT || key == 'D') {
+				p.setX(p.getX() + xSpeed);
+			}
+			if (key ==  KeyEvent.VK_UP || key == 'W') {
+				p.setY(p.getY() + ySpeed);
+			}
+			if (key ==  KeyEvent.VK_DOWN || key == 'S') {
+				p.setY(p.getY() - ySpeed);
+			}
+			
+		}
+	}
+
+}
