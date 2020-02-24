@@ -118,22 +118,18 @@ public class Game extends Canvas implements Runnable {
 	
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
-		
-		System.out.println("fsdf");
-		
-		
-		if(key == KeyEvent.VK_D) {
-			p.setX(p.getX() + 50);
-			System.out.println("fdad");
-		}else if(key == KeyEvent.VK_A) {
-			p.setX(p.getX() - 50);
-			System.out.println("fdad");
+		if(key == KeyEvent.VK_RIGHT) {
+			p.setX(p.getX() + 5);
+			System.out.println("Player moving Right");
+		}else if(key == KeyEvent.VK_LEFT) {
+			p.setX(p.getX() - 5);
+			System.out.println("Player moving Left");
 		}else if(key == KeyEvent.VK_DOWN) {
-			p.setY(p.getY() - 50);
-			System.out.println("fdad");			
+			p.setY(p.getY() + 5);
+			System.out.println("Player moving Down");			
 		}else if(key == KeyEvent.VK_UP) {
-			p.setY(p.getY() + 50);
-			System.out.println("fdad");
+			p.setY(p.getY() - 5);
+			System.out.println("Player moving Up");
 		}
 	}
 	
@@ -145,9 +141,9 @@ public class Game extends Canvas implements Runnable {
 
 		Game game = new Game();
 
-		game.setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
-		game.setMaximumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
-		game.setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
+			game.setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
+			game.setMaximumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
+			game.setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 
 		JFrame frame = new JFrame(game.TITLE);
 		frame.add(game);
