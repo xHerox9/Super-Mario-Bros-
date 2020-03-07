@@ -18,35 +18,41 @@ public class Game extends Application {
 	}
 	
 	public void start(Stage primaryStage) throws Exception {
+		// code for the initialization of stage and scene
 		Stage window = primaryStage;
 		Group root = new Group();
 		Scene scene = new Scene (root);
 		Canvas canvas = new Canvas (WIDTH,HEIGHT);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		Image background = new Image("Map_design.png");
-
+		
+		// code for initialization of button for menu
 		Button play = createPlayButton();
 		Button about = createAboutButton();
 		Button howTo = createHowToPlayButton();
 		Button credit= createCreditButton();
 		
+		// code for action listener for when button is pressed
 		play.setOnAction(new HandleButton(window, scene, "Play"));
 		about.setOnAction(new HandleButton(window, scene, "About"));
 		howTo.setOnAction(new HandleButton(window, scene, "HowTo"));
 		credit.setOnAction(new HandleButton(window, scene,"Credit"));
 		
+		//adding stuff onto scene
 		root.getChildren().add(canvas);
 		root.getChildren().add(play);
 		root.getChildren().add(about);
 		root.getChildren().add(howTo);
 		root.getChildren().add(credit);
 		
+		//setting up the properties of the stage
 		window.setTitle(GAME_TITLE);
 		window.setScene(scene);
 		gc.drawImage(background, 0, 0);
 		window.setResizable(false);
 		window.show();
 	}
+	// code for creating the Play button
 	public Button createPlayButton() {
 		Button play = new Button("Play");
 		play.setLayoutX(50);
@@ -55,7 +61,7 @@ public class Game extends Application {
 		play.setStyle("-fx-background-color: #87ceeb");
 		return play; 
 	}
-	
+	// code for creating the About button
 	public Button createAboutButton() {
 		Button about= new Button("About");
 		about.setLayoutX(50);
@@ -64,6 +70,7 @@ public class Game extends Application {
 		about.setStyle("-fx-background-color: #87ceeb");
 		return about;
 	}
+	//code for creating the How to Play button
 	public Button createHowToPlayButton() {
 		Button howTo = new Button ("How to Play");
 		howTo.setLayoutX(50);
@@ -72,6 +79,7 @@ public class Game extends Application {
 		howTo.setStyle("-fx-background-color: #87ceeb");
 		return howTo;
 	}
+	//code for creating the Credit button
 	public Button createCreditButton() {
 		Button credit= new Button("Credit");
 		credit.setLayoutX(50);

@@ -44,41 +44,26 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 		Canvas canvas1 = new Canvas (WIDTH,HEIGHT);
 		GraphicsContext gc1 = canvas1.getGraphicsContext2D();
 		Image background1 = new Image("Map_design.png");
-		Button exit = new Button("Back");
-		Rectangle block = new Rectangle();
-		
-		exit.setLayoutX(550);
-		exit.setStyle("-fx-font-size: 2em;-fx-background-color: transparent;-fx-text-fill: black");
-		exit.setOnAction(e-> PStage.setScene(PScene));
+		Button back = createBackButton();
+		Text teamName = creditTeamText();
+		Text leader = creditLeaderText();
+		Text member = creditMemberText();
+		Text member1 = creditMember1Text();
+		Text member2 = creditMember2Text();
+		Text member3 = creditMember3Text();
 		
 		root1.getChildren().add(canvas1);
-		root1.getChildren().add(exit);
+		root1.getChildren().add(back);
 		
 		if(type.equals("Play")){
 			System.out.println("Welcome to the game");
 		}
 		else {
 			gc1.drawImage(background1, 0, 0);
-			block.setLayoutX(70);
-			block.setLayoutY(100);
-			block.setWidth(500);
-			block.setHeight(330);
-			block.setFill(Color.ALICEBLUE);
+			Rectangle block = createRectangle();
 			root1.getChildren().add(block);
 		}
 		if(type.equals("Credit")) {
-			Text teamName = new Text(225, 120,"CPSC 233 TUT 7-02");
-			Text leader = new Text(180, 160,"Team Leader: Abhay Sharma");
-			Text member = new Text(155, 220,"Architect/Code Reviewer: Ehab Islam");
-			Text member1 = new Text(120, 280, "Artist/Second Programmer: Survat Kumra");
-			Text member2 = new Text(70, 340, "Game Designer/Lead Programmer: Muhammad Zahir");
-			Text member3 = new Text(170, 400, "Third Programmer: Peter Kang");
-			teamName.setFont(new Font(20));
-			leader.setFont(new Font(20));
-			member.setFont(new Font(20));
-			member1.setFont(new Font(20));
-			member2.setFont(new Font(20));
-			member3.setFont(new Font(20));
 			root1.getChildren().add(teamName);
 			root1.getChildren().add(leader);
 			root1.getChildren().add(member);
@@ -86,9 +71,53 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 			root1.getChildren().add(member2);
 			root1.getChildren().add(member3);
 		}
-			
-		
 		PStage.setScene(scene1);
 		
+	}
+	public Button createBackButton() {
+		Button back = new Button("Back");
+		back.setLayoutX(550);
+		back.setStyle("-fx-font-size: 2em;-fx-background-color: transparent;-fx-text-fill: black");
+		back.setOnAction(e-> PStage.setScene(PScene));
+		return back;
+	}
+	public Rectangle createRectangle() {
+		Rectangle block = new Rectangle();
+		block.setLayoutX(70);
+		block.setLayoutY(100);
+		block.setWidth(500);
+		block.setHeight(330);
+		block.setFill(Color.ALICEBLUE);
+		return block;
+	}
+	public Text creditTeamText() {
+		Text teamName = new Text(225, 120,"CPSC 233 TUT 7-02");
+		teamName.setFont(new Font(20));
+		return teamName;
+	}
+	public Text creditLeaderText() {
+		Text leader = new Text(180, 160,"Team Leader: Abhay Sharma");
+		leader.setFont(new Font(20));
+		return leader;
+	}
+	public Text creditMemberText() {
+		Text member = new Text(155, 220,"Architect/Code Reviewer: Ehab Islam");
+		member.setFont(new Font(20));
+		return member;
+	}
+	public Text creditMember1Text() {
+		Text member1 = new Text(120, 280, "Artist/Second Programmer: Survat Kumra");
+		member1.setFont(new Font(20));
+		return member1;
+	}
+	public Text creditMember2Text() {
+		Text member2 = new Text(70, 340, "Game Designer/Lead Programmer: Muhammad Zahir");
+		member2.setFont(new Font(20));
+		return member2;
+	}
+	public Text creditMember3Text() {
+		Text member3 = new Text(170, 400, "Third Programmer: Peter Kang");
+		member3.setFont(new Font(20));
+		return member3;
 	}
 }
