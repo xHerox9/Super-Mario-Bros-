@@ -23,7 +23,7 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 							
 							A_check = false; // Resets A key check
 						}else {
-							A_check = false; // Resets D key check
+							A_check = false; // Resets A key check
 						}
 					}
 					// if key pressed is d
