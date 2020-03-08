@@ -13,20 +13,25 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class HandleButton extends Game implements EventHandler<ActionEvent> {
+	//instance variables 
 	private Stage PStage;
 	private Scene PScene;
 	private String type;
+	
+	//Constructor
 	public HandleButton(Stage window, Scene scene, String type) {
 		this.PStage= window;
 		this.PScene= scene;
 		this.type= type;
 		
 	}
+	//Copy constructor
 	HandleButton(HandleButton obj){
 		PStage= obj.PStage;
 		PScene= obj.PScene;
 		type= obj.type;
 	}
+	//getters
 	public Scene getPScene() {
 		return PScene;
 	}
@@ -37,13 +42,16 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 	public String getType() {
 		return type;
 	}
+	// handle method
 	public void handle(ActionEvent event) {
-		
+		// initialization of new scene
 		Group root1 = new Group();
 		Scene scene1 = new Scene (root1);
 		Canvas canvas1 = new Canvas (WIDTH,HEIGHT);
 		GraphicsContext gc1 = canvas1.getGraphicsContext2D();
 		Image background1 = new Image("Map_design.png");
+		
+		//initialization of buttons and text  
 		Button back = createBackButton();
 		Text teamName = creditTeamText();
 		Text leader = creditLeaderText();
@@ -52,28 +60,39 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 		Text member2 = creditMember2Text();
 		Text member3 = creditMember3Text();
 		
+		//adding things to scene
 		root1.getChildren().add(canvas1);
 		root1.getChildren().add(back);
 		
+		// if statement for what happens when the play button is pressed
+		// please create a new scene in map to be place here
+		// as of now when the play button is pressed it will just display a message it won't transition to new scene
 		if(type.equals("Play")){
 			System.out.println("Welcome to the game");
 		}
+		
+		//else statement will make new scene when button other than play is pressed
 		else {
 			gc1.drawImage(background1, 0, 0);
 			Rectangle block = createRectangle();
 			root1.getChildren().add(block);
+			// if statement for when the credit button is press, it will display text specific to the credit button
+			if(type.equals("Credit")) {
+				root1.getChildren().add(teamName);
+				root1.getChildren().add(leader);
+				root1.getChildren().add(member);
+				root1.getChildren().add(member1);
+				root1.getChildren().add(member2);
+				root1.getChildren().add(member3);
+			}
+			// put the scene on the window
+			// this scene is for only button other than the play button
+			PStage.setScene(scene1);
 		}
-		if(type.equals("Credit")) {
-			root1.getChildren().add(teamName);
-			root1.getChildren().add(leader);
-			root1.getChildren().add(member);
-			root1.getChildren().add(member1);
-			root1.getChildren().add(member2);
-			root1.getChildren().add(member3);
-		}
-		PStage.setScene(scene1);
 		
 	}
+	
+	// following code is for the creation of text for credit button
 	public Button createBackButton() {
 		Button back = new Button("Back");
 		back.setLayoutX(550);

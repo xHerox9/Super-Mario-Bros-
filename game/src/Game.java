@@ -38,7 +38,7 @@ public class Game extends Application {
 		howTo.setOnAction(new HandleButton(window, scene, "HowTo"));
 		credit.setOnAction(new HandleButton(window, scene,"Credit"));
 		
-		//adding stuff onto scene
+		//adding stuff onto  main scene
 		root.getChildren().add(canvas);
 		root.getChildren().add(play);
 		root.getChildren().add(about);
@@ -70,6 +70,7 @@ public class Game extends Application {
 		about.setStyle("-fx-background-color: #87ceeb");
 		return about;
 	}
+	
 	//code for creating the How to Play button
 	public Button createHowToPlayButton() {
 		Button howTo = new Button ("How to Play");
@@ -79,6 +80,7 @@ public class Game extends Application {
 		howTo.setStyle("-fx-background-color: #87ceeb");
 		return howTo;
 	}
+	
 	//code for creating the Credit button
 	public Button createCreditButton() {
 		Button credit= new Button("Credit");
