@@ -6,6 +6,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -69,8 +70,37 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 		// as of now when the play button is pressed it will just display a message it won't transition to new scene
 		if(type.equals("Play")){
 			System.out.println("Welcome to the game");
+			Map m = new Map();
+			int[][] a = m.getmapGrid();
+			m.openImages();
+			Image groundBlock = m.getImage1();
+			Image deathBlock = m.getImage2();
+			Image pipeBlock = m.getImage3();
+			
+			Group playRoot = new Group();
+			Scene playScene = new Scene(playRoot);
+			Canvas playCanvas = new Canvas(WIDTH,HEIGHT);
+			GraphicsContext playgc = playCanvas.getGraphicsContext2D();
+			for(int i=0; i < a.length ;i++) {
+				for(int j=0; j < a[i].length;j++) {
+					int [] coor = m.convertToPixel(i, j);
+					if(a[i][j]==1) {	
+						playgc.drawImage(groundBlock, coor[0], coor[1]);
+					}else if(a[i][j]==2) {	
+						playgc.drawImage(deathBlock, coor[0], coor[1]);
+					}
+					else if(a[i][j]==4) {	
+						playgc.drawImage(pipeBlock, coor[0], coor[1]);
+					}
+					
+				}
+			}
+			Player p = new Player();
+			
+			playRoot.getChildren().add(playCanvas);	
+			PStage.setScene(playScene);
+			PStage.show();
 		}
-		
 		//else statement will make new scene when button other than play is pressed
 		else {
 			gc1.drawImage(background1, 0, 0);
