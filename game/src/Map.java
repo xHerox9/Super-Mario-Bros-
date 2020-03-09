@@ -3,20 +3,23 @@ import javafx.scene.image.Image;
 
 	public class Map{
 	
-	// 1 is for ground block
 	public Image img1;
 	public Image img2;
 	public Image img3;
+	public Image PlayBackground;
+	public Image img4;
+	// 1 is for ground block
 	// 2 is for death block
-	// 3 is for player
-	// 4 is for pipe	
+	// 3 is for pipe
+	// 4 is for player	
 	
 	public void openImages() {
 		
 	    img1 = new Image("groundBlock.png");
 	    img2 = new Image("deathBlock.png");
 	    img3 = new Image("pipeBlock.png");
-	    
+	    img4 = new Image("myplayer.png");
+	    //PlayBackground = new Image("Map_design.png");/////////////////////////undo this
 	   
 		}
 	
@@ -42,41 +45,22 @@ import javafx.scene.image.Image;
 		int[] a = {i*32,j*32};
 		
 		return a;
-//		int[][] pixeled = new int[15][20];
-//		int flag = 0;
-//		for (x = 0; x < mapGrid.length ; x++) {
-//			for(y=0; y < mapGrid[x].length; y++) {
-//				mapGrid[x][y] = flag;
-//				if(flag == 0) {
-//					pixeled[i][j] = mapGrid[x*32][y*32];
-//					System.out.println(pixeled[i][j]);
-//					return pixeled[i][j];
-//				}
-//				else if(flag == 1) {
-//					pixeled[i][j] = mapGrid[x*32][y*32];
-//					System.out.println(pixeled[i][j]);
-//					return pixeled[i][j];
-//				}
-//				else if(flag == 2) {
-//					pixeled[i][j] = mapGrid[x*32][y*32];
-//					System.out.println(pixeled[i][j]);
-//					return pixeled[i][j];
-//				}
-//				else if(flag == 3) {
-//					pixeled[i][j] = mapGrid[x*32][y*32];
-//					System.out.println(pixeled[i][j]);
-//					return pixeled[i][j];
-//				}
-//				else if(flag == 4) {
-//					pixeled[i][j] = mapGrid[x*32][y*32];
-//					System.out.println(pixeled[i][j]);
-//					return pixeled[i][j];
-//				}
-//			}
-//		}
-//		System.out.println(pixeled[i][j]);
-//		return pixeled[i][j];
-	}
+		/*
+		 * // int[][] pixeled = new int[15][20]; // int flag = 0; // for (x = 0; x <
+		 * mapGrid.length ; x++) { // for(y=0; y < mapGrid[x].length; y++) { //
+		 * mapGrid[x][y] = flag; // if(flag == 0) { // pixeled[i][j] =
+		 * mapGrid[x*32][y*32]; // System.out.println(pixeled[i][j]); // return
+		 * pixeled[i][j]; // } // else if(flag == 1) { // pixeled[i][j] =
+		 * mapGrid[x*32][y*32]; // System.out.println(pixeled[i][j]); // return
+		 * pixeled[i][j]; // } // else if(flag == 2) { // pixeled[i][j] =
+		 * mapGrid[x*32][y*32]; // System.out.println(pixeled[i][j]); // return
+		 * pixeled[i][j]; // } // else if(flag == 3) { // pixeled[i][j] =
+		 * mapGrid[x*32][y*32]; // System.out.println(pixeled[i][j]); // return
+		 * pixeled[i][j]; // } // else if(flag == 4) { // pixeled[i][j] =
+		 * mapGrid[x*32][y*32]; // System.out.println(pixeled[i][j]); // return
+		 * pixeled[i][j]; // } // } // } // System.out.println(pixeled[i][j]); // return
+		 * pixeled[i][j];
+		 */	}
 	public int[][] getmapGrid(){
 		return mapGrid;
 	}
@@ -88,6 +72,12 @@ import javafx.scene.image.Image;
 	}
 	public Image getImage3() {
 		return img3;
+	}
+	public Image getPlayBackground() {
+		return PlayBackground;
+	}
+	public Image getImage4() {
+		return img4;
 	}
 	/*
 	 * public static void main(String[] args) { Map m = new Map(); int[] a =

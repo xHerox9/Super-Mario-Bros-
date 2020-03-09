@@ -1,12 +1,12 @@
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -76,11 +76,18 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 			Image groundBlock = m.getImage1();
 			Image deathBlock = m.getImage2();
 			Image pipeBlock = m.getImage3();
+			Image PlayBackground = m.getPlayBackground();
+			Image Player = m.getImage4();
 			
 			Group playRoot = new Group();
+			Group playerRoot = new Group();
 			Scene playScene = new Scene(playRoot);
 			Canvas playCanvas = new Canvas(WIDTH,HEIGHT);
 			GraphicsContext playgc = playCanvas.getGraphicsContext2D();
+			Node player; 
+			
+			
+			playgc.drawImage(PlayBackground, 0, 0);//sets the background of the play screen
 			for(int i=0; i < a.length ;i++) {
 				for(int j=0; j < a[i].length;j++) {
 					int [] coor = m.convertToPixel(i, j);
@@ -95,7 +102,18 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 					
 				}
 			}
-			Player p = new Player();
+			//getting the player on screen. 
+			  Player p = new Player();
+			 //creates a player class instance 
+			  int[][] PlayerMap = p.playerMain();//creates a copy of plyer map 
+			  int[][] playerlocation =  p.getPlayerLocation(PlayerMap);//gets the location of player on that map
+			  int[] PlayerCoord = m.convertToPixel(playerlocation[0][0],
+			  playerlocation[1][0]);//converts that to pixel coordinate
+			  playgc.drawImage(Player, PlayerCoord[0], PlayerCoord[1]);//draws the player image on the map
+			 
+			//scene1.setOnKeyPressed(null);
+			
+			
 			
 			playRoot.getChildren().add(playCanvas);	
 			PStage.setScene(playScene);

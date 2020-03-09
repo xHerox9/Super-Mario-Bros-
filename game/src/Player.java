@@ -78,6 +78,17 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 		*/
 		return PlayerArray; // Returns the updated grid copy
 	}
+	public int[][] getPlayerLocation(int[][] Player_Array){
+		for(int row = 0; row < Player_Array.length; row++) {
+			for(int column = 0; column <Player_Array.length; column++) {
+				if(Player_Array[row][column] == 3) {
+					int[][] playerloc = {{row},{column}};
+					return playerloc;
+					}
+				}
+			}
+		return null;
+		}
 	@Override
 	public void handle(KeyEvent event) {
 		switch (event.getCode()) {
@@ -87,5 +98,6 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 			break; 
 		}
 	}
+
 
 }

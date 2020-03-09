@@ -1,4 +1,6 @@
 
+import java.util.HashMap;
+
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -6,13 +8,14 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 public class Game extends Application {
 	protected int HEIGHT = 480;
 	protected int WIDTH = 640;
 	private String GAME_TITLE = "Demo"; // temp title.
-	
+	private HashMap<KeyCode, Boolean> keys= new HashMap<KeyCode , Boolean>();
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -20,6 +23,7 @@ public class Game extends Application {
 	
 	public void start(Stage primaryStage) throws Exception {
 		// code for the initialization of stage and scene
+		
 		Stage window = primaryStage;
 		Group root = new Group();
 		Scene scene = new Scene (root);
@@ -91,4 +95,5 @@ public class Game extends Application {
 		credit.setStyle("-fx-background-color: #87ceeb");
 		return credit;
 	}
+
 }
