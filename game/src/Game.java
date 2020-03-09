@@ -17,6 +17,7 @@ public class Game extends Application {
 		launch(args);
 	}
 	
+	
 	public void start(Stage primaryStage) throws Exception {
 		// code for the initialization of stage and scene
 		Stage window = primaryStage;
