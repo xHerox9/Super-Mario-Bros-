@@ -102,6 +102,8 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 					
 				}
 			}
+			
+			playScene.setOnKeyPressed(new Player());
 			//getting the player on screen. 
 			  Player p = new Player();
 			 //creates a player class instance 
