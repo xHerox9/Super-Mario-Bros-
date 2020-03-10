@@ -217,7 +217,11 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 		return about;
 		}
 	public Text howToText() {
-		Text howTo = new Text(80,150, "Coming soon, please check back");
+		String text = 
+				"Instruction\n"+
+				"D: to move right\n"+
+				"A to move left";
+		Text howTo = new Text(80,150,text);
 		howTo.setFont(new Font(30));
 		return howTo;
 	}
