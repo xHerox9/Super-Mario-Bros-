@@ -50,7 +50,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 		Scene scene1 = new Scene (root1);
 		Canvas canvas1 = new Canvas (WIDTH,HEIGHT);
 		GraphicsContext gc1 = canvas1.getGraphicsContext2D();
-		Image background1 = new Image("Map_design.png");
+		Image background1 = new Image("backgroundmain.png");
 		
 		//initialization of buttons and text  
 		Button back = createBackButton();
@@ -84,6 +84,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 			Scene playScene = new Scene(playRoot);
 			Canvas playCanvas = new Canvas(WIDTH,HEIGHT);
 			GraphicsContext playgc = playCanvas.getGraphicsContext2D();
+			playgc.drawImage(background1, 0, 0);
 			Node player; 
 			
 			
