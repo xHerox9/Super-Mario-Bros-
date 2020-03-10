@@ -52,14 +52,22 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 		GraphicsContext gc1 = canvas1.getGraphicsContext2D();
 		Image background1 = new Image("backgroundmain.png");
 		
-		//initialization of buttons and text  
+		//initialization of back button 
 		Button back = createBackButton();
+		
+		//initialization of text for credit button
 		Text teamName = creditTeamText();
 		Text leader = creditLeaderText();
 		Text member = creditMemberText();
 		Text member1 = creditMember1Text();
 		Text member2 = creditMember2Text();
 		Text member3 = creditMember3Text();
+		
+		//initialization of text for about button
+		Text about = aboutText();
+		
+		//initialization of text for the How To Play button
+		Text howTo = howToText();
 		
 		//adding things to scene
 		root1.getChildren().add(canvas1);
@@ -69,7 +77,10 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 		// please create a new scene in map to be place here
 		// as of now when the play button is pressed it will just display a message it won't transition to new scene
 		if(type.equals("Play")){
+			// message when the play button is pressed 
 			System.out.println("Welcome to the game");
+			
+			//initialization of map class
 			Map m = new Map();
 			int[][] a = m.getmapGrid();
 			m.openImages();
@@ -78,7 +89,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 			Image pipeBlock = m.getImage3();
 			Image PlayBackground = m.getPlayBackground();
 			Image Player = m.getImage4();
-			
+			//initialization of scene for play button 
 			Group playRoot = new Group();
 			Group playerRoot = new Group();
 			Scene playScene = new Scene(playRoot);
@@ -136,6 +147,15 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 				root1.getChildren().add(member2);
 				root1.getChildren().add(member3);
 			}
+			// else if statement for when the about is press, it will display text specific to the about button
+			else if(type.equals("About")) {
+				root1.getChildren().add(about);
+			
+			}
+			else if(type.equals("HowTo")) {
+				root1.getChildren().add(howTo);
+			
+			}
 			// put the scene on the window
 			// this scene is for only button other than the play button
 			PStage.setScene(scene1);
@@ -189,5 +209,16 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 		Text member3 = new Text(170, 400, "Third Programmer: Peter Kang");
 		member3.setFont(new Font(20));
 		return member3;
+	}
+	// code for text for the about scene
+	public Text aboutText() {
+		Text about = new Text(80,150, "Coming soon, please check back");
+		about.setFont(new Font(30));
+		return about;
+		}
+	public Text howToText() {
+		Text howTo = new Text(80,150, "Coming soon, please check back");
+		howTo.setFont(new Font(30));
+		return howTo;
 	}
 }

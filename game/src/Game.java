@@ -56,6 +56,8 @@ public class Game extends Application {
 		gc.drawImage(background, 0, 0);
 		window.setResizable(false);
 		window.show();
+		//code for message when window is closed
+		window.setOnCloseRequest(e-> System.out.println("Good Bye"));
 	}
 	// code for creating the Play button
 	public Button createPlayButton() {
