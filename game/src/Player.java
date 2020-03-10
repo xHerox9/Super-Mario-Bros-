@@ -61,7 +61,7 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 	public int[][] playerMain() {
 		updateGrid(); // Creates updated copy of the Grid
 		
-		/* The purpose of the commented out code is to print out the updated grids for testing 
+		/* The purpose of the commented out code is to print out the updated grids for testing */
 		 
 		
 		String output = "";
@@ -75,7 +75,7 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 		System.out.println(output);
 		
 		
-		*/
+		
 		return PlayerArray; // Returns the updated grid copy
 	}
 	public int[][] getPlayerLocation(int[][] Player_Array){
