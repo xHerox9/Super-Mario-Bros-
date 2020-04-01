@@ -21,11 +21,11 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 			 					 {0,0,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,0,1,1},
 			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			 					 {3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+			 					 {0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 			 					 {1,1,1,1,2,2,2,1,1,1,1,2,2,2,1,1,1,1,1,1}};			
 			// This is a sample array as I don't know where the actual array will be coming from
-	private boolean A_check = false; // used to confirm if the A key has been pressed
-	private boolean D_check = false; // used to confirm if the D key has been pressed
+	boolean A_check = false; // used to confirm if the A key has been pressed
+	boolean D_check = false; // used to confirm if the D key has been pressed
 	
 	public void updateGrid() {
 		for(int row = 0; row < PlayerArray.length; row++) {  // This for loop with go through the maps horizontally
@@ -44,7 +44,7 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 					}
 					// if key pressed is d
 					if (D_check == true) {
-						if ((column + 1 < PlayerArray[row].length) && PlayerArray[row][column + 1] == 0) { // Same as the A key but for D instead
+						if ((column + 1 < PlayerArray[row].length) && PlayerArray[row][column + 1] == 0 && PlayerArray[row + 1][column + 1] == 1) { // Same as the A key but for D instead
 							PlayerArray[row][column + 1] = 3;
 							PlayerArray[row][column] = 0;
 							
@@ -72,7 +72,7 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 			output = output + '\n';
 		}
 		
-		System.out.println(output);
+		//System.out.println(output);
 		
 		
 		

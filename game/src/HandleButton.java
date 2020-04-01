@@ -1,3 +1,6 @@
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -7,17 +10,22 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class HandleButton extends Game implements EventHandler<ActionEvent> {
+
+
+public class HandleButton extends Game implements EventHandler<ActionEvent>{
 	//instance variables 
 	private Stage PStage;
 	private Scene PScene;
 	private String type;
+	
+
 	
 	//Constructor
 	public HandleButton(Stage window, Scene scene, String type) {
@@ -95,7 +103,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 			Scene playScene = new Scene(playRoot);
 			Canvas playCanvas = new Canvas(WIDTH,HEIGHT);
 			GraphicsContext playgc = playCanvas.getGraphicsContext2D();
-			playgc.drawImage(background1, 0, 0);
+			
 			Node player; 
 			
 			
@@ -115,16 +123,51 @@ public class HandleButton extends Game implements EventHandler<ActionEvent> {
 				}
 			}
 			
-			playScene.setOnKeyPressed(new Player());
 			//getting the player on screen. 
-			  Player p = new Player();
+			
+			
+			 Player p = new Player();
+			 //int[][] PlayerMap = p.playerMain();
+			 
+			 
+	 
+			 playScene.setOnKeyPressed(p);
+		
 			 //creates a player class instance 
+			  /*
 			  int[][] PlayerMap = p.playerMain();//creates a copy of plyer map 
 			  int[][] playerlocation =  p.getPlayerLocation(PlayerMap);//gets the location of player on that map
 			  int[] PlayerCoord = m.convertToPixel(playerlocation[0][0],
 			  playerlocation[1][0]);//converts that to pixel coordinate
 			  playgc.drawImage(Player, PlayerCoord[0], PlayerCoord[1]);//draws the player image on the map
-			 
+			  
+			  */
+			    
+			    /*
+				int[][] playerlocation =  p.getPlayerLocation(PlayerMap);//gets the location of player on that map
+			 	int[] PlayerCoord = m.convertToPixel(playerlocation[0][0],
+				playerlocation[1][0]);//converts that to pixel coordinate */
+			  
+			  
+			  new Timer().schedule(
+					    new TimerTask() {
+
+					        @Override
+					        public void run() {					        	
+					            int[][] PlayerMap = p.playerMain();//creates a copy of plyer map 
+					        	int[][] playerlocation =  p.getPlayerLocation(PlayerMap);//gets the location of player on that map
+							 	int[] PlayerCoord = m.convertToPixel(playerlocation[0][0],
+								playerlocation[1][0]);//converts that to pixel coordinate
+								playgc.drawImage(Player, PlayerCoord[0], PlayerCoord[1]);//draws the player image on the map
+								playgc.clearRect(PlayerCoord[0]-32, PlayerCoord[1], 32, 32);	
+								playgc.clearRect(PlayerCoord[0]+32, PlayerCoord[1], 32, 32);
+								
+								
+								
+					        }
+					    }, 0, 25);
+			  
+			  
 			//scene1.setOnKeyPressed(null);
 			
 			
