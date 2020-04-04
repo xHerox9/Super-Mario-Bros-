@@ -155,9 +155,9 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 					        @Override
 					        public void run() {					        	
 					            int[][] PlayerMap = p.playerMain();//creates a copy of plyer map 
-					        	int[][] playerlocation =  p.getPlayerLocation(PlayerMap);//gets the location of player on that map
-							 	int[] PlayerCoord = m.convertToPixel(playerlocation[0][0],
-								playerlocation[1][0]);//converts that to pixel coordinate
+					        	int[] playerlocation =  p.getPlayerLocation(PlayerMap);//gets the location of player on that map
+					        	System.out.println();
+							 	int[] PlayerCoord = m.convertToPixel(playerlocation[0],playerlocation[1]);//converts that to pixel coordinate
 								playgc.drawImage(Player, PlayerCoord[0], PlayerCoord[1]);//draws the player image on the map
 								playgc.clearRect(PlayerCoord[0]-32, PlayerCoord[1], 32, 32);	
 								playgc.clearRect(PlayerCoord[0]+32, PlayerCoord[1], 32, 32);
@@ -165,7 +165,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 								
 								
 					        }
-					    }, 0, 25);
+					    }, 0, 40);
 			  
 			  
 			//scene1.setOnKeyPressed(null);

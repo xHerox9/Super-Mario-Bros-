@@ -44,7 +44,7 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 					}
 					// if key pressed is d
 					if (D_check == true) {
-						if ((column + 1 < PlayerArray[row].length) && PlayerArray[row][column + 1] == 0 && PlayerArray[row + 1][column + 1] == 1) { // Same as the A key but for D instead
+						if ((column + 1 < PlayerArray[row].length) && PlayerArray[row][column + 1] == 0 && (PlayerArray[row + 1][column + 1] == 1) ||PlayerArray[row + 1][column + 1] == 2)  { // Same as the A key but for D instead
 							PlayerArray[row][column + 1] = 3;
 							PlayerArray[row][column] = 0;
 							
@@ -78,11 +78,11 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 		
 		return PlayerArray; // Returns the updated grid copy
 	}
-	public int[][] getPlayerLocation(int[][] Player_Array){
+	public int[] getPlayerLocation(int[][] Player_Array){
 		for(int row = 0; row < Player_Array.length; row++) {
 			for(int column = 0; column <Player_Array.length; column++) {
 				if(Player_Array[row][column] == 3) {
-					int[][] playerloc = {{row},{column}};
+					int[] playerloc = {row,column};
 					return playerloc;
 					}
 				}
