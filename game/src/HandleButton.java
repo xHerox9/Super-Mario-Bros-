@@ -154,13 +154,34 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 
 					        @Override
 					        public void run() {					        	
-					            int[][] PlayerMap = p.playerMain();//creates a copy of plyer map 
-					        	int[] playerlocation =  p.getPlayerLocation(PlayerMap);//gets the location of player on that map
-					        	System.out.println();
-							 	int[] PlayerCoord = m.convertToPixel(playerlocation[0],playerlocation[1]);//converts that to pixel coordinate
-								playgc.drawImage(Player, PlayerCoord[0], PlayerCoord[1]);//draws the player image on the map
-								playgc.clearRect(PlayerCoord[0]-32, PlayerCoord[1], 32, 32);	
-								playgc.clearRect(PlayerCoord[0]+32, PlayerCoord[1], 32, 32);
+					            //int[][] PlayerMap = p.playerMain();//creates a copy of plyer map
+					        	int [][] a = p.playerMain();//creates a copy of plyer map
+					        	//int[] playerlocation =  p.getPlayerLocation(a);//gets the location of player on that map
+					        	//System.out.println();
+							 	//int[] PlayerCoord = m.convertToPixel(playerlocation[0],playerlocation[1]);//converts that to pixel coordinate
+							 	playgc.clearRect(0, 0, 640, 480);// clearing the canvas before eact player movement update
+							 	
+//								playgc.drawImage(Player, PlayerCoord[0], PlayerCoord[1]);//draws the player image on the map
+//								playgc.clearRect(PlayerCoord[0]-32, PlayerCoord[1], 32, 32);	
+//								playgc.clearRect(PlayerCoord[0]+32, PlayerCoord[1], 32, 32);
+							 	// Re rendering the entire grid 
+							 	for(int i=0; i < a.length ;i++) {
+									for(int j=0; j < a[i].length;j++) {
+										int [] coor = m.convertToPixel(i, j);
+										if(a[i][j]==1) {	
+											playgc.drawImage(groundBlock, coor[0], coor[1]);
+										}else if(a[i][j]==2) {	
+											playgc.drawImage(deathBlock, coor[0], coor[1]);
+										}
+										else if(a[i][j]==4) {	
+											playgc.drawImage(pipeBlock, coor[0], coor[1]);
+										}else if(a[i][j]==3) {	
+											playgc.drawImage(Player, coor[0], coor[1]);
+										}
+										
+									}
+								}
+								
 								
 								
 								

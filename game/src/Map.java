@@ -43,7 +43,7 @@ import javafx.scene.image.Image;
 		int i = column;
 		int j = row;
 		int[] a = {i*32,j*32};
-		System.out.println(a[0]+","+a[1]);
+		//System.out.println(a[0]+","+a[1]);
 		return a;
 		/*
 		 * // int[][] pixeled = new int[15][20]; // int flag = 0; // for (x = 0; x <

@@ -22,10 +22,11 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 			 					 {0,0,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,0,1,1},
 			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 			 					 {0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			 					 {1,1,1,1,2,2,2,1,1,1,1,2,2,2,1,1,1,1,1,1}};			
+			 					 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};			
 			// This is a sample array as I don't know where the actual array will be coming from
 	boolean A_check = false; // used to confirm if the A key has been pressed
 	boolean D_check = false; // used to confirm if the D key has been pressed
+	boolean W_check = false; // used to confirm if the W key has been pressed
 	
 	public void updateGrid() {
 		for(int row = 0; row < PlayerArray.length; row++) {  // This for loop with go through the maps horizontally
@@ -44,7 +45,7 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 					}
 					// if key pressed is d
 					if (D_check == true) {
-						if ((column + 1 < PlayerArray[row].length) && PlayerArray[row][column + 1] == 0 && (PlayerArray[row + 1][column + 1] == 1) ||PlayerArray[row + 1][column + 1] == 2)  { // Same as the A key but for D instead
+						if ((column + 1 < PlayerArray[row].length) && PlayerArray[row][column + 1] == 0 )  { // Same as the A key but for D instead
 							PlayerArray[row][column + 1] = 3;
 							PlayerArray[row][column] = 0;
 							
@@ -52,6 +53,18 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 						}else {
 							D_check = false;
 						}
+					}
+					// if key pressed is w
+					if(W_check==true) {
+						if(PlayerArray[row-1][column] == 0) {
+							PlayerArray[row-1][column] = 3; // Moves player
+							PlayerArray[row][column] = 0; // Sets previous space as empty
+							
+							W_check = false;
+						}else {
+							W_check = false;
+						}
+						//System.out.println("W pressed");
 					}
 				}
 			}
@@ -72,7 +85,7 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 			output = output + '\n';
 		}
 		
-		//System.out.println(output);
+		System.out.println(output);
 		
 		
 		
@@ -94,6 +107,7 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 		switch (event.getCode()) {
 		case A: A_check = true; playerMain(); break; // In the situation that the A key has been pressed.
 		case D:	D_check = true; playerMain(); break; // In the situation that the D key has been pressed.
+		case W: W_check = true; playerMain(); break; // In the situation that the D key has been pressed.
 		default:
 			break; 
 		}
