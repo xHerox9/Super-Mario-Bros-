@@ -58,7 +58,7 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 					}
 					// if key pressed is w
 					if(W_check==true) {
-						if(PlayerArray[row-1][column] == 0 && PlayerArray[row-1][column] == 0) {
+						if(PlayerArray[row-1][column] == 0 && PlayerArray[row-1][column] == 0 && PlayerArray[row+1][column] == 1) {
 							PlayerArray[row-2][column] = 3; // Moves player
 							PlayerArray[row][column] = 0; // Sets previous space as empty
 							try {
@@ -78,7 +78,7 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 						//System.out.println("W pressed");
 					}
 					try {
-						Thread.sleep(50);
+						Thread.sleep(100);
 						if(PlayerArray[row+1][column]!=1 ) {
 							PlayerArray[row+2][column] = 3; // Moves player
 							PlayerArray[row][column] = 0;
