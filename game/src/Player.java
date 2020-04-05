@@ -3,6 +3,8 @@
 // that is the code needed to placed to implement this class.
 
 
+import java.util.concurrent.TimeUnit;
+
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
@@ -56,9 +58,18 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 					}
 					// if key pressed is w
 					if(W_check==true) {
-						if(PlayerArray[row-1][column] == 0) {
-							PlayerArray[row-1][column] = 3; // Moves player
+						if(PlayerArray[row-1][column] == 0 && PlayerArray[row-1][column] == 0) {
+							PlayerArray[row-2][column] = 3; // Moves player
 							PlayerArray[row][column] = 0; // Sets previous space as empty
+							try {
+								Thread.sleep(10);
+								//PlayerArray[row-2][column] = 3; // Moves player
+								//PlayerArray[row-1][column] = 0;
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							
 							
 							W_check = false;
 						}else {
@@ -66,6 +77,18 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 						}
 						//System.out.println("W pressed");
 					}
+					try {
+						Thread.sleep(50);
+						if(PlayerArray[row+1][column]!=1 ) {
+							PlayerArray[row+2][column] = 3; // Moves player
+							PlayerArray[row][column] = 0;
+							
+						}
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 				}
 			}
 		}

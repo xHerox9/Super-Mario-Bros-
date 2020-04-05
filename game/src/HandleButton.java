@@ -186,7 +186,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 								
 								
 					        }
-					    }, 0, 40);
+					    }, 0, 10);
 			  
 			  
 			//scene1.setOnKeyPressed(null);
