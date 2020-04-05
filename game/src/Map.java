@@ -19,7 +19,7 @@ import javafx.scene.image.Image;
 	    img2 = new Image("deathBlock.png");
 	    img3 = new Image("pipeBlock.png");
 	    img4 = new Image("myplayer.png");
-	    //PlayBackground = new Image("Map_design.png");/////////////////////////undo this
+	    PlayBackground = new Image("backgroundmain.png");/////////////////////////undo this
 	   
 		}
 	

@@ -165,6 +165,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 //								playgc.clearRect(PlayerCoord[0]-32, PlayerCoord[1], 32, 32);	
 //								playgc.clearRect(PlayerCoord[0]+32, PlayerCoord[1], 32, 32);
 							 	// Re rendering the entire grid 
+							 	playgc.drawImage(PlayBackground, 0, 0);
 							 	for(int i=0; i < a.length ;i++) {
 									for(int j=0; j < a[i].length;j++) {
 										int [] coor = m.convertToPixel(i, j);
