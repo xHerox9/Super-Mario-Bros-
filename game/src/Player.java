@@ -3,12 +3,16 @@
 // that is the code needed to placed to implement this class.
 
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
 public class Player extends Game implements EventHandler<KeyEvent> {
+	
+	public int playRow;
+	public int playCol;
 	
 	public int[][] PlayerArray = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -21,8 +25,8 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 			 					 {0,0,1,1,1,1,0,0,0,1,1,0,0,0,1,1,1,0,0,1},
 			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			 					 {0,0,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,0,1,1},
-			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0},
+			 					 {0,0,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1},
 			 					 {0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 			 					 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};			
 			// This is a sample array as I don't know where the actual array will be coming from
@@ -39,11 +43,13 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 							PlayerArray[row][column - 1] = 3; // Moves player
 							PlayerArray[row][column] = 0; // Sets previous space as empty
 							
-							A_check = false; // Resets A key check
+							playRow = row;
+							playCol = column - 1;
+							 // Resets A key check
+						}else {
+							A_check = false;
 						}
-						else {
-							A_check = false; // Resets A key check
-						}
+					
 					}
 					// if key pressed is d
 					if (D_check == true) {
@@ -51,7 +57,9 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 							PlayerArray[row][column + 1] = 3;
 							PlayerArray[row][column] = 0;
 							
-							D_check = false;
+							playRow = row;
+							playCol = column + 1;
+							
 						}else {
 							D_check = false;
 						}
@@ -61,6 +69,9 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 						if(PlayerArray[row-1][column] == 0 && PlayerArray[row-2][column] == 0 && PlayerArray[row+1][column] == 1) {
 							PlayerArray[row-2][column] = 3; // Moves player
 							PlayerArray[row][column] = 0; // Sets previous space as empty
+							
+							playRow = row - 2;
+							playCol = column;
 							try {
 								Thread.sleep(10);
 								//PlayerArray[row-2][column] = 3; // Moves player
@@ -79,15 +90,22 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 					}
 					try {
 						Thread.sleep(100);
-						if(PlayerArray[row+1][column]!=1 ) {
-							PlayerArray[row+2][column] = 3; // Moves player
-							PlayerArray[row][column] = 0;
+						if(PlayerArray[row+1][column]!=1 && A_check == false && D_check == false) {
+							if(playRow == row && playCol == column) {
+								PlayerArray[row+2][column] = 3; // Moves player
+								PlayerArray[row][column] = 0;
+							}
 							
 						}
+						
+						A_check = false;
+						D_check = false;
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+
+			        
 					
 				}
 			}
@@ -108,8 +126,9 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 			output = output + '\n';
 		}
 		
+		/*
 		System.out.println(output);
-		
+		*/
 		
 		
 		return PlayerArray; // Returns the updated grid copy
