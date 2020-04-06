@@ -7,14 +7,13 @@ import javafx.scene.image.Image;
 	public Image img2;
 	public Image img3;
 	public Image PlayBackground;
+	
 	public Image img4;
 	public Image star;
 	public Image blankstar;
-	// 1 is for ground block
-	// 2 is for death block
-	// 3 is for pipe
-	// 4 is for player	
-	//jjj
+	public Image Victory;
+	
+	
 	
 	public void openImages() {
 		
@@ -25,6 +24,9 @@ import javafx.scene.image.Image;
 	    PlayBackground = new Image("backgroundmain.png");/////////////////////////undo this
 	    star = new Image("star.png");
 	    blankstar = new Image("starblank.png");
+	    //victory image background by Diago Romeo 
+	    //https://unsplash.com/photos/Hv1vquGs5Nw
+	    Victory = new Image("gameVictoryScreen.jpg");
 	   
 		}
 	
@@ -48,24 +50,9 @@ import javafx.scene.image.Image;
 		int i = column;
 		int j = row;
 		int[] a = {i*32,j*32};
-		//System.out.println(a[0]+","+a[1]);
+		//System.out.println(a[0]+","+a[1]); 
 		return a;
-		/*
-		 * // int[][] pixeled = new int[15][20]; // int flag = 0; // for (x = 0; x <
-		 * mapGrid.length ; x++) { // for(y=0; y < mapGrid[x].length; y++) { //
-		 * mapGrid[x][y] = flag; // if(flag == 0) { // pixeled[i][j] =
-		 * mapGrid[x*32][y*32]; // System.out.println(pixeled[i][j]); // return
-		 * pixeled[i][j]; // } // else if(flag == 1) { // pixeled[i][j] =
-		 * mapGrid[x*32][y*32]; // System.out.println(pixeled[i][j]); // return
-		 * pixeled[i][j]; // } // else if(flag == 2) { // pixeled[i][j] =
-		 * mapGrid[x*32][y*32]; // System.out.println(pixeled[i][j]); // return
-		 * pixeled[i][j]; // } // else if(flag == 3) { // pixeled[i][j] =
-		 * mapGrid[x*32][y*32]; // System.out.println(pixeled[i][j]); // return
-		 * pixeled[i][j]; // } // else if(flag == 4) { // pixeled[i][j] =
-		 * mapGrid[x*32][y*32]; // System.out.println(pixeled[i][j]); // return
-		 * pixeled[i][j]; // } // } // } // System.out.println(pixeled[i][j]); // return
-		 * pixeled[i][j];
-		 */	}
+	}
 	public int[][] getmapGrid(){
 		return mapGrid;
 	}
@@ -91,10 +78,8 @@ import javafx.scene.image.Image;
 	public Image getblankstar() {
 		return blankstar;
 	}
-	/*
-	 * public static void main(String[] args) { Map m = new Map(); int[] a =
-	 * m.convertToPixel(4,5); System.out.print(a[1]);
-	 * 
-	 * }
-	 */
+	public Image getvictoryscreen() {
+		return Victory;
+	}
+	
 }
