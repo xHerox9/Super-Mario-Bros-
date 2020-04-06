@@ -86,6 +86,7 @@ public class Game extends Application {
 		howTo.setPrefSize(100, 50);
 		howTo.setStyle("-fx-background-color: #87ceeb");
 		return howTo;
+		
 	}
 	
 	//code for creating the Credit button
