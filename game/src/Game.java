@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 public class Game extends Application {
 	protected int HEIGHT = 480;
+	
 	protected int WIDTH = 640;
 	private String GAME_TITLE = "Laggy Luigi"; // temp title.
 	private HashMap<KeyCode, Boolean> keys= new HashMap<KeyCode , Boolean>();
@@ -29,7 +30,7 @@ public class Game extends Application {
 		Scene scene = new Scene (root);
 		Canvas canvas = new Canvas (WIDTH,HEIGHT);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		Image background = new Image("backgroundmain.png");
+		Image background = new Image("starting_screen.jpg");
 		
 		// code for initialization of button for menu
 		Button play = createPlayButton();
