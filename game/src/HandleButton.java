@@ -100,6 +100,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 			Image Player = m.getImage4();
 			Image Star = m.getStar();
 			Image blankstar = m.getblankstar();
+			Image Victory = m.getvictoryscreen();
 			//initialization of scene for play button 
 			Group playRoot = new Group();
 			Group playerRoot = new Group();
@@ -174,7 +175,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 								if(victory) {
 									playgc.clearRect(0, 0, 640, 480);
 									
-									playgc.fillText("Victory", 320, 240);
+									playgc.drawImage(Victory, 0, 0);;
 									cancel();
 								}
 								
@@ -279,7 +280,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 	}
 	// code for text for the about scene
 	public Text aboutText() {
-		String text = "Having been fed up with his brother, Mario’s popularity and his dwindling popularity.\n"+ 
+		String text = "Having been fed up with his brother, Marioâ€™s popularity and his dwindling popularity.\n"+ 
 				"Luigi is a man on a mission to reclaim his dominance as being the best brother. No\n" +
 				"more shall he be only the MC of a haunted house game. Screw to always being\n"+
 				"overshadowed by Mario in every game they appear in. The time has come for action!!\n"+
