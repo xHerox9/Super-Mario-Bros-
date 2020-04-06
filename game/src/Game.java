@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class Game extends Application {
 	protected int HEIGHT = 480;
 	protected int WIDTH = 640;
-	private String GAME_TITLE = "Luigi’s Adventure "; // temp title.
+	private String GAME_TITLE = "Laggy Luigi"; // temp title.
 	private HashMap<KeyCode, Boolean> keys= new HashMap<KeyCode , Boolean>();
 	public static void main(String[] args) {
 		launch(args);
