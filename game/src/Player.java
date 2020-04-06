@@ -11,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 
 public class Player extends Game implements EventHandler<KeyEvent> {
 	
+	
 	public int playRow;
 	public int playCol;
 	
