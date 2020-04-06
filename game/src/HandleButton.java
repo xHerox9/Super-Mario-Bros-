@@ -204,7 +204,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 			
 			}
 			else if(type.equals("HowTo")) {
-				Image keys = new Image ("keys.gif");
+				Image keys = new Image ("keys.gif"); // gif from: https://dribbble.com/shots/4955867-Key-Lime-Pie
 				ImageView keyView = new ImageView (keys);
 				keyView.setFitHeight(200);
 				keyView.setFitWidth(200);
