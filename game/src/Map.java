@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 	public Image PlayBackground;
 	public Image img4;
 	public Image star;
+	public Image blankstar;
 	// 1 is for ground block
 	// 2 is for death block
 	// 3 is for pipe
@@ -23,6 +24,7 @@ import javafx.scene.image.Image;
 	    img4 = new Image("myplayer.png");
 	    PlayBackground = new Image("backgroundmain.png");/////////////////////////undo this
 	    star = new Image("star.png");
+	    blankstar = new Image("starblank.png");
 	   
 		}
 	
@@ -85,6 +87,9 @@ import javafx.scene.image.Image;
 	}
 	public Image getStar() {
 		return star;
+	}
+	public Image getblankstar() {
+		return blankstar;
 	}
 	/*
 	 * public static void main(String[] args) { Map m = new Map(); int[] a =
