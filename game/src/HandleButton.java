@@ -134,19 +134,6 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 			 playScene.setOnKeyPressed(p);
 		
 			 //creates a player class instance 
-			  /*
-			  int[][] PlayerMap = p.playerMain();//creates a copy of plyer map 
-			  int[][] playerlocation =  p.getPlayerLocation(PlayerMap);//gets the location of player on that map
-			  int[] PlayerCoord = m.convertToPixel(playerlocation[0][0],
-			  playerlocation[1][0]);//converts that to pixel coordinate
-			  playgc.drawImage(Player, PlayerCoord[0], PlayerCoord[1]);//draws the player image on the map
-			  
-			  */
-			    
-			    /*
-				int[][] playerlocation =  p.getPlayerLocation(PlayerMap);//gets the location of player on that map
-			 	int[] PlayerCoord = m.convertToPixel(playerlocation[0][0],
-				playerlocation[1][0]);//converts that to pixel coordinate */
 			  
 			  
 			  new Timer().schedule(
@@ -154,16 +141,11 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 
 					        @Override
 					        public void run() {					        	
-					            //int[][] PlayerMap = p.playerMain();//creates a copy of plyer map
+	
 					        	int [][] a = p.playerMain();//creates a copy of plyer map
-					        	//int[] playerlocation =  p.getPlayerLocation(a);//gets the location of player on that map
-					        	//System.out.println();
-							 	//int[] PlayerCoord = m.convertToPixel(playerlocation[0],playerlocation[1]);//converts that to pixel coordinate
+					       
 							 	playgc.clearRect(0, 0, 640, 480);// clearing the canvas before eact player movement update
-							 	
-//								playgc.drawImage(Player, PlayerCoord[0], PlayerCoord[1]);//draws the player image on the map
-//								playgc.clearRect(PlayerCoord[0]-32, PlayerCoord[1], 32, 32);	
-//								playgc.clearRect(PlayerCoord[0]+32, PlayerCoord[1], 32, 32);
+
 							 	// Re rendering the entire grid 
 							 	playgc.drawImage(PlayBackground, 0, 0);
 							 	for(int i=0; i < a.length ;i++) {
@@ -187,10 +169,10 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 								
 								
 					        }
-					    }, 0, 10);
+					    }, 0, 1);
 			  
 			  
-			//scene1.setOnKeyPressed(null);
+
 			
 			
 			
