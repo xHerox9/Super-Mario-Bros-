@@ -262,15 +262,23 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 	}
 	// code for text for the about scene
 	public Text aboutText() {
-		Text about = new Text(80,150, "Coming soon, please check back");
-		about.setFont(new Font(30));
+		String text = "Having been fed up with his brother, Mario’s popularity and his dwindling popularity.\n"+ 
+				"Luigi is a man on a mission to reclaim his dominance as being the best brother. No\n" +
+				"more shall he be only the MC of a haunted house game. Screw to always being\n"+
+				"overshadowed by Mario in every game they appear in. The time has come for action!!\n"+
+				"\n" +
+				"With this in mind, Luigi races out on his kart in this action-packed platformer. It is\n"+
+				"yours responsible to guide Luigi through this adventure. Shall you guide him to his \n"+
+				"victory? Or shall you fail him? Because you are a Mario-Lover infiltrator!!";
+		Text about = new Text(80,150,text);
+		about.setFont(new Font(12));
 		return about;
 		}
 	public Text howToText() {
 		String text = 
 				"Instruction\n"+
 				"D: to move right\n"+
-				"A to move left";
+				"A to move left\n"+"w to jump";
 		Text howTo = new Text(80,150,text);
 		howTo.setFont(new Font(30));
 		return howTo;
