@@ -97,6 +97,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 			Image pipeBlock = m.getImage3();
 			Image PlayBackground = m.getPlayBackground();
 			Image Player = m.getImage4();
+			Image Star = m.getStar();
 			//initialization of scene for play button 
 			Group playRoot = new Group();
 			Group playerRoot = new Group();
@@ -160,6 +161,8 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 											playgc.drawImage(pipeBlock, coor[0], coor[1]);
 										}else if(a[i][j]==3) {	
 											playgc.drawImage(Player, coor[0], coor[1]);
+										}else if(a[i][j]==5) {	
+											playgc.drawImage(Star, coor[0], coor[1]);
 										}
 										
 									}

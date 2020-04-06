@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 	public Image img3;
 	public Image PlayBackground;
 	public Image img4;
+	public Image star;
 	// 1 is for ground block
 	// 2 is for death block
 	// 3 is for pipe
@@ -17,9 +18,10 @@ import javafx.scene.image.Image;
 		
 	    img1 = new Image("groundBlock.png");
 	    img2 = new Image("deathBlock.png");
-	    img3 = new Image("pipeBlock.png");
+	    img3 = new Image("pipe.png");
 	    img4 = new Image("myplayer.png");
 	    PlayBackground = new Image("backgroundmain.png");/////////////////////////undo this
+	    star = new Image("star.png");
 	   
 		}
 	
@@ -30,10 +32,10 @@ import javafx.scene.image.Image;
 									 {0,0,0,0,0,0,1,1,1,1,1,1,1,1,2,2,2,1,1,1},
 									 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 									 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-									 {0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-									 {0,0,1,1,1,1,0,0,0,1,1,0,0,0,1,1,1,0,0,1},
 									 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+									 {0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,1,1,0,0,1},
 									 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+									 {1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 									 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0},
 				 					 {0,0,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1},
 									 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -78,6 +80,9 @@ import javafx.scene.image.Image;
 	}
 	public Image getImage4() {
 		return img4;
+	}
+	public Image getStar() {
+		return star;
 	}
 	/*
 	 * public static void main(String[] args) { Map m = new Map(); int[] a =
