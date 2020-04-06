@@ -99,6 +99,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 			Image PlayBackground = m.getPlayBackground();
 			Image Player = m.getImage4();
 			Image Star = m.getStar();
+			Image blankstar = m.getblankstar();
 			//initialization of scene for play button 
 			Group playRoot = new Group();
 			Group playerRoot = new Group();
@@ -106,24 +107,24 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 			Canvas playCanvas = new Canvas(WIDTH,HEIGHT);
 			GraphicsContext playgc = playCanvas.getGraphicsContext2D();
 			
-			Node player; 
+			//Node player; 
 			
 			
-			playgc.drawImage(PlayBackground, 0, 0);//sets the background of the play screen
-			for(int i=0; i < a.length ;i++) {
-				for(int j=0; j < a[i].length;j++) {
-					int [] coor = m.convertToPixel(i, j);
-					if(a[i][j]==1) {	
-						playgc.drawImage(groundBlock, coor[0], coor[1]);
-					}else if(a[i][j]==2) {	
-						playgc.drawImage(deathBlock, coor[0], coor[1]);
-					}
-					else if(a[i][j]==4) {	
-						playgc.drawImage(pipeBlock, coor[0], coor[1]);
-					}
-					
-				}
-			}
+//			playgc.drawImage(PlayBackground, 0, 0);//sets the background of the play screen
+//			for(int i=0; i < a.length ;i++) {
+//				for(int j=0; j < a[i].length;j++) {
+//					int [] coor = m.convertToPixel(i, j);
+//					if(a[i][j]==1) {	
+//						playgc.drawImage(groundBlock, coor[0], coor[1]);
+//					}else if(a[i][j]==2) {	
+//						playgc.drawImage(deathBlock, coor[0], coor[1]);
+//					}
+//					else if(a[i][j]==4) {	
+//						playgc.drawImage(pipeBlock, coor[0], coor[1]);
+//					}
+//					
+//				}
+//			}
 			
 			//getting the player on screen. 
 			
@@ -143,7 +144,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 
 					        @Override
 					        public void run() {					        	
-	
+					        	boolean victory = false;
 					        	int [][] a = p.playerMain();//creates a copy of plyer map
 					       
 							 	playgc.clearRect(0, 0, 640, 480);// clearing the canvas before eact player movement update
@@ -164,9 +165,17 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 											playgc.drawImage(Player, coor[0], coor[1]);
 										}else if(a[i][j]==5) {	
 											playgc.drawImage(Star, coor[0], coor[1]);
+										}else if(a[i][j]==6) {	
+											playgc.drawImage(blankstar, coor[0], coor[1]);
 										}
 										
 									}
+								}victory = p.checkVictory();
+								if(victory) {
+									playgc.clearRect(0, 0, 640, 480);
+									
+									playgc.fillText("Victory", 320, 240);
+									cancel();
 								}
 								
 								
