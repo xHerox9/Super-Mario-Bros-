@@ -89,9 +89,8 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 			// message when the play button is pressed 
 			System.out.println("Welcome to the game");
 			
-			//initialization of map class
+			//initialization of map class and all other image variables
 			Map m = new Map();
-			int[][] a = m.getmapGrid();
 			m.openImages();
 			Image groundBlock = m.getImage1();
 			Image deathBlock = m.getImage2();
@@ -103,54 +102,23 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 			Image Victory = m.getvictoryscreen();
 			//initialization of scene for play button 
 			Group playRoot = new Group();
-			Group playerRoot = new Group();
 			Scene playScene = new Scene(playRoot);
 			Canvas playCanvas = new Canvas(WIDTH,HEIGHT);
 			GraphicsContext playgc = playCanvas.getGraphicsContext2D();
 			
-			//Node player; 
-			
-			
-//			playgc.drawImage(PlayBackground, 0, 0);//sets the background of the play screen
-//			for(int i=0; i < a.length ;i++) {
-//				for(int j=0; j < a[i].length;j++) {
-//					int [] coor = m.convertToPixel(i, j);
-//					if(a[i][j]==1) {	
-//						playgc.drawImage(groundBlock, coor[0], coor[1]);
-//					}else if(a[i][j]==2) {	
-//						playgc.drawImage(deathBlock, coor[0], coor[1]);
-//					}
-//					else if(a[i][j]==4) {	
-//						playgc.drawImage(pipeBlock, coor[0], coor[1]);
-//					}
-//					
-//				}
-//			}
-			
-			//getting the player on screen. 
-			
-			
-			 Player p = new Player();
-			 //int[][] PlayerMap = p.playerMain();
-			 
-			 
-	 
-			 playScene.setOnKeyPressed(p);
-		
-			 //creates a player class instance 
-			  
-			  
-			  new Timer().schedule(
+			//Initializing player
+			Player p = new Player();
+				 
+			playScene.setOnKeyPressed(p);
+			new Timer().schedule(
 					    new TimerTask() {
-
 					        @Override
 					        public void run() {					        	
 					        	boolean victory = false;
-					        	int [][] a = p.playerMain();//creates a copy of plyer map
-					       
+					        	int [][] a = p.playerMain();//creates a copy of player map					       
 							 	playgc.clearRect(0, 0, 640, 480);// clearing the canvas before eact player movement update
 
-							 	// Re rendering the entire grid 
+							 	// Re rendering the entire grid to update player position; 
 							 	playgc.drawImage(PlayBackground, 0, 0);
 							 	for(int i=0; i < a.length ;i++) {
 									for(int j=0; j < a[i].length;j++) {
@@ -177,19 +145,9 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 									
 									playgc.drawImage(Victory, 0, 0);;
 									cancel();
-								}
-								
-								
-								
-								
+								}								
 					        }
-					    }, 0, 1);
-			  
-			  
-
-			
-			
-			
+					    }, 0, 1); 
 			playRoot.getChildren().add(playCanvas);	
 			PStage.setScene(playScene);
 			PStage.show();
@@ -274,6 +232,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 		return member2;
 	}
 	public Text creditMember3Text() {
+		
 		Text member3 = new Text(170, 400, "Third Programmer: Peter Kang");
 		member3.setFont(new Font(20));
 		return member3;
