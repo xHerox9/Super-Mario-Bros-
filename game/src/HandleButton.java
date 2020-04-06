@@ -10,6 +10,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -203,7 +204,14 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 			
 			}
 			else if(type.equals("HowTo")) {
+				Image keys = new Image ("keys.gif");
+				ImageView keyView = new ImageView (keys);
+				keyView.setFitHeight(200);
+				keyView.setFitWidth(200);
+				keyView.setX(370);
+				keyView.setY(100);
 				root1.getChildren().add(howTo);
+				root1.getChildren().add(keyView);
 			
 			}
 			// put the scene on the window
