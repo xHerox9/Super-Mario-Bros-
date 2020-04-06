@@ -30,7 +30,7 @@ public class Game extends Application {
 		Scene scene = new Scene (root);
 		Canvas canvas = new Canvas (WIDTH,HEIGHT);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		Image background = new Image("starting_screen.jpg");
+		Image background = new Image("starting_screen.jpg");// from: https://www.hiclipart.com/search?clipart=Luigia and https://unsplash.com/photos/Xaanw0s0pMk
 		
 		// code for initialization of button for menu
 		Button play = createPlayButton();
