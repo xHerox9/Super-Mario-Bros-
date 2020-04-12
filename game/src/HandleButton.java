@@ -1,17 +1,16 @@
+//Handles the button on the game main screen
 import java.util.Timer;
 import java.util.TimerTask;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -19,15 +18,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-
+//No parameters
+//handles event on button presses
 public class HandleButton extends Game implements EventHandler<ActionEvent>{
 	//instance variables 
 	private Stage PStage;
 	private Scene PScene;
-	private String type;
-	
-
-	
+	private String type;	
 	//Constructor
 	public HandleButton(Stage window, Scene scene, String type) {
 		this.PStage= window;
@@ -137,7 +134,6 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 										}else if(a[i][j]==6) {	
 											playgc.drawImage(blankstar, coor[0], coor[1]);
 										}
-										
 									}
 								}victory = p.checkVictory();
 								if(victory) {
@@ -171,30 +167,15 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 				root1.getChildren().add(about);
 			
 			}
-			// else if statement for when the How To Play is press, it will display text specific to the How to Play button
 			else if(type.equals("HowTo")) {
 				Image keys = new Image ("keys.gif"); // gif from: https://dribbble.com/shots/4955867-Key-Lime-Pie
 				ImageView keyView = new ImageView (keys);
-				Image x = new Image ("x.png"); //from: http://clipart-library.com/clipart/rcLxML7Ri.htm
-				ImageView xPic = new ImageView(x);
-				Image e = new Image("e.png");//from: https://www.iconsdb.com/orange-icons/letter-e-icon.html
-				ImageView ePic = new ImageView(e);
 				keyView.setFitHeight(200);
 				keyView.setFitWidth(200);
 				keyView.setX(370);
 				keyView.setY(100);
-				xPic.setFitHeight(25);
-				xPic.setFitWidth(25);
-				xPic.setX(455);
-				xPic.setY(165);
-				ePic.setFitHeight(25);
-				ePic.setFitWidth(25);
-				ePic.setX(455);
-				ePic.setY(165);
 				root1.getChildren().add(howTo);
 				root1.getChildren().add(keyView);
-				root1.getChildren().add(xPic);
-				root1.getChildren().add(ePic);
 			
 			}
 			// put the scene on the window
@@ -254,7 +235,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 	}
 	// code for text for the about scene
 	public Text aboutText() {
-		String text = "Having been fed up with his brother, Mario™'s popularity and his dwindling popularity.\n"+ 
+		String text = "Having been fed up with his brother, MarioÃ¢â‚¬â„¢s popularity and his dwindling popularity.\n"+ 
 				"Luigi is a man on a mission to reclaim his dominance as being the best brother. No\n" +
 				"more shall he be only the MC of a haunted house game. Screw to always being\n"+
 				"overshadowed by Mario in every game they appear in. The time has come for action!!\n"+
@@ -270,9 +251,7 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 		String text = 
 				"Instruction\n"+
 				"D: to move right\n"+
-				"A: to move left\n"+
-				"W: to jump\n"+ 
-				"E: to collect the star";
+				"A to move left\n"+"w to jump";
 		Text howTo = new Text(80,150,text);
 		howTo.setFont(new Font(30));
 		return howTo;
