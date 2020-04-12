@@ -1,6 +1,3 @@
-// git hub test
-import java.util.HashMap;
-
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -8,15 +5,14 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 public class Game extends Application {
 	protected int HEIGHT = 480;
 	
 	protected int WIDTH = 640;
-	private String GAME_TITLE = "Laggy Luigi";
-	private HashMap<KeyCode, Boolean> keys= new HashMap<KeyCode , Boolean>();
+	private String GAME_TITLE = "Laggy Luigi"; // temp title.
+//	private HashMap<KeyCode, Boolean> keys= new HashMap<KeyCode , Boolean>();
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -30,7 +26,7 @@ public class Game extends Application {
 		Scene scene = new Scene (root);
 		Canvas canvas = new Canvas (WIDTH,HEIGHT);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		Image background = new Image("starting_screen.jpg");// from: https://www.hiclipart.com/search?clipart=Luigia and https://unsplash.com/photos/Xaanw0s0pMk
+		Image background = new Image("starting_screen.jpg");
 		
 		// code for initialization of button for menu
 		Button play = createPlayButton();
