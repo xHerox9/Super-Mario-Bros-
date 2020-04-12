@@ -1,21 +1,25 @@
+// Handles the map related operations of the game
+// Opens and stores image in variables
 import javafx.scene.image.Image;
 
 
 	public class Map{
 	
+	//Declaring Variables to store different kinds of variables. 
 	public Image img1;
 	public Image img2;
 	public Image img3;
-	public Image PlayBackground;
-	
+	public Image PlayBackground;	
 	public Image img4;
 	public Image star;
 	public Image blankstar;
 	public Image Victory;
 	
 	
-	
-	public void openImages() {
+	//openImages() opens the image files
+	//Takes no Parameter
+	//
+	public void openImages(){
 		
 	    img1 = new Image("groundBlock.png");
 	    img2 = new Image("deathBlock.png");
@@ -30,54 +34,41 @@ import javafx.scene.image.Image;
 	   
 		}
 	
-	private final int mapGrid[][] = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-									 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-									 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-									 {0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0},
-									 {0,0,0,0,0,0,1,1,1,1,1,1,1,1,2,2,2,1,1,1},
-									 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-									 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-									 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-									 {0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,1,1,0,0,1},
-									 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-									 {1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-									 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0},
-				 					 {0,0,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1},
-									 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-									 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
-	
 	public int[] convertToPixel(int row, int column) {
 		int i = column;
 		int j = row;
 		int[] a = {i*32,j*32};
-		//System.out.println(a[0]+","+a[1]); 
 		return a;
-	}
-	public int[][] getmapGrid(){
-		return mapGrid;
-	}
-	
+	}	
+	//Getting Image Image1
 	public Image getImage1() {
 		return img1;
 	}
+	//Getting Image Image2
 	public Image getImage2() {
 		return img2;
 	}
+	//Getting Image Image3
 	public Image getImage3() {
 		return img3;
 	}
+	//Getting Image PlayBackground
 	public Image getPlayBackground() {
 		return PlayBackground;
 	}
+	//Getting Image Image4
 	public Image getImage4() {
 		return img4;
 	}
+	//Getting Image Star
 	public Image getStar() {
 		return star;
 	}
+	//Getting Image blankstar
 	public Image getblankstar() {
 		return blankstar;
 	}
+	//Getting Image Victory
 	public Image getvictoryscreen() {
 		return Victory;
 	}
