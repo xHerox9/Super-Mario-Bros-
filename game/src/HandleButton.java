@@ -104,13 +104,11 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 		root1.getChildren().add(back);
 		
 		// if statement for what happens when the play button is pressed
-		// please create a new scene in map to be place here
-		// as of now when the play button is pressed it will just display a message it won't transition to new scene
 		if(type.equals("Play")){
 			// message when the play button is pressed 
 			System.out.println("Welcome to the game");
 			
-			//initialization of map class and all other image variables
+			//initialization of map class all other image variables and the playscene
 			Map m = new Map();
 			m.openImages();
 			Image groundBlock = m.getImage1();
@@ -137,9 +135,9 @@ public class HandleButton extends Game implements EventHandler<ActionEvent>{
 					        public void run() {					        	
 					        	boolean victory = false;
 					        	int [][] a = p.playerMain();//creates a copy of player map					       
-							 	playgc.clearRect(0, 0, 640, 480);// clearing the canvas before eact player movement update
-
-							 	// Re rendering the entire grid to update player position; 
+							 	playgc.clearRect(0, 0, 640, 480);// clearing the canvas before each player movement update
+							    
+							 	// Re rendering the entire grid to update player position
 							 	playgc.drawImage(PlayBackground, 0, 0);
 							 	for(int i=0; i < a.length ;i++) {
 									for(int j=0; j < a[i].length;j++) {

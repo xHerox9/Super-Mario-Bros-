@@ -3,9 +3,6 @@
 // that is the code needed to placed to implement this class.
 
 
-import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
-
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
@@ -15,13 +12,13 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 	public int playRow; // last player row, prevents duplicates of Luigi being created
 	public int playCol; // last player row, prevents duplicates of Luigi being created
 	
-	public int[][] PlayerArray = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,6,6,0,0},
-			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			 					 {0,5,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0},
-			 					 {1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1},
-			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0},
-			 					 {0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	public int[][] PlayerArray = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,6,6,0,0},    //0 represents blank space 
+			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},		//1 represents ground block 
+			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, 	//3 represents player (Luigi)
+			 					 {0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},		//4 represents pipe
+			 					 {1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1},		//5 represents filled star
+			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0},		//6 represents blank star
+			 					 {0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1},		
 			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0},
 			 					 {1,1,0,0,1,1,1,1,1,1,1,0,0,0,1,1,1,0,0,1},
 			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0},
@@ -30,7 +27,7 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 			 					 {0,0,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1},
 			 					 {0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 			 					 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};			
-			// This is a sample array as I don't know where the actual array will be coming from
+			
 	boolean A_check = false; // used to confirm if the A key has been pressed
 	boolean D_check = false; // used to confirm if the D key has been pressed
 	boolean W_check = false; // used to confirm if the W key has been pressed
@@ -87,20 +84,20 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 							
 							playRow = row - 2;
 							playCol = column;
-							try {
-								Thread.sleep(10);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
+								
+							try { Thread.sleep(10); } // Created a 10 millisecond gap before the implementation of further code 
+							catch (InterruptedException e) {
+								e.printStackTrace(); }
+							 	
 						}
 						W_check = false;
 					}
 					try {
-						Thread.sleep(100);
-						if(PlayerArray[row+1][column]!=1 && A_check == false && D_check == false) {
+						Thread.sleep(100); // Created a 100 millisecond gap before the implementation of further code 
+						if(PlayerArray[row+1][column]!=1 && A_check == false && D_check == false) {// Updates the player location to the ground if the player was above the ground 
 							if(playRow == row && playCol == column) {
-								PlayerArray[row+2][column] = 3; // Moves player
-								PlayerArray[row][column] = 0;
+								PlayerArray[row+2][column] = 3; // Updates the Player location on the map 
+								PlayerArray[row][column] = 0; // Changes the previous player location to an empty space
 							}
 							
 						}
@@ -182,17 +179,7 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 		
 		return PlayerArray; // Returns the updated grid copy
 	}
-	public int[] getPlayerLocation(int[][] Player_Array){
-		for(int row = 0; row < Player_Array.length; row++) {
-			for(int column = 0; column <Player_Array.length; column++) {
-				if(Player_Array[row][column] == 3) {
-					int[] playerloc = {row,column};
-					return playerloc;
-					}
-				}
-			}
-		return null;
-		}
+
 	@Override
 	public void handle(KeyEvent event) {
 		switch (event.getCode()) {
