@@ -1,10 +1,10 @@
 // READ ME
 // player.setOnKeyPressed(new Player())
 // that is the code needed to placed to implement this class.
-// Has map level grid
-// has methods to update the player grid on key presses
-// 
 
+
+import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
@@ -12,15 +12,9 @@ import javafx.scene.input.KeyEvent;
 public class Player extends Game implements EventHandler<KeyEvent> {
 	
 	
-	public int playRow;
-	public int playCol;
-	// Map level with locations of all the objects on the map
-	public int emptySpace = 0;
-	public int groundBlock = 1;
-	public int playerBlock = 3;
-	public int pipeBlock = 4;
-	public int star = 5;
-	public int starCount = 6;
+	public int playRow; // last player row, prevents duplicates of Luigi being created
+	public int playCol; // last player row, prevents duplicates of Luigi being created
+	
 	public int[][] PlayerArray = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,6,6,0,0},
 			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 			 					 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -42,69 +36,71 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 	boolean W_check = false; // used to confirm if the W key has been pressed
 	boolean E_check = false; // used to confirm if the E key has been pressed
 	
-	// checks key presses then updates the player array
-	// no parameters
-	// loops through the array, finds the player location which is denoted number 3 then updates the array
-	public void updateGrid() {
-		for(int row = 0; row < PlayerArray.length; row++) {  							// This for loop with go through the maps horizontally
-			for (int column = 0; column < PlayerArray[row].length; column++) { 			// This for loop will go through the map vertically
-				if (PlayerArray[row][column] == playerBlock) { 									// This if statement is trying to find the location of the player on the grid
-					if (A_check == true) { 												// Checks to see if the A key was pressed
-						if ((column - 1 >= emptySpace) && PlayerArray[row][column - 1] == emptySpace) {	// Confirms that the movement is valid
-							PlayerArray[row][column - 1] = playerBlock; 							// Moves player
-							PlayerArray[row][column] = emptySpace;								// Sets previous space as empty							
+	public void aValidMove() { // Checks to see if the a move is valid or not.
+		for(int row = 0; row < PlayerArray.length; row++) {  // This for loop with go through the maps horizontally
+			for (int column = 0; column < PlayerArray[row].length; column++) { // This for loop will go through the map vertically
+				if (PlayerArray[row][column] == 3) {  // This if statement is trying to find the location of the player on the grid
+					if (A_check == true) { // Checks to see if the A key was pressed
+						if ((column - 1 >= 0) && PlayerArray[row][column - 1] == 0) { // Confirms that the movement is valid
+							PlayerArray[row][column - 1] = 3; // Moves player
+							PlayerArray[row][column] = 0; // Sets previous space as empty
+							
 							playRow = row;
 							playCol = column - 1;
-							// Resets A key check
-						}else {
-							A_check = false;
+							 // Resets A key check
 						}
-					
 					}
-					// if key pressed is d
+					A_check = false;
+				}
+			}
+		}
+	}
+	
+	public void dValidMove() {// Checks to see if the d move is valid or not.
+		for(int row = 0; row < PlayerArray.length; row++) {  // This for loop with go through the maps horizontally
+			for (int column = 0; column < PlayerArray[row].length; column++) { // This for loop will go through the map vertically
+				if (PlayerArray[row][column] == 3) {  // This if statement is trying to find the location of the player on the grid
 					if (D_check == true) {
-						if ((column + 1 < PlayerArray[row].length) 
-							&& PlayerArray[row][column + 1] == emptySpace )  { 					// Same as the A key but for D instead
-							PlayerArray[row][column + 1] = playerBlock;
-							PlayerArray[row][column] = emptySpace;							
+						if ((column + 1 < PlayerArray[row].length) && PlayerArray[row][column + 1] == 0 )  { // Same as the A key but for D instead
+							PlayerArray[row][column + 1] = 3;
+							PlayerArray[row][column] = 0;
+							
 							playRow = row;
 							playCol = column + 1;
 							
-						}else {
-							D_check = false;
 						}
 					}
-					// if key pressed is w
+					D_check = false;
+				}
+			}
+		}
+	}
+	
+	public void wValidMove() {// Checks to see if the w move is valid or not.
+		for(int row = 0; row < PlayerArray.length; row++) {  // This for loop with go through the maps horizontally
+			for (int column = 0; column < PlayerArray[row].length; column++) { // This for loop will go through the map vertically
+				if (PlayerArray[row][column] == 3) {  // This if statement is trying to find the location of the player on the grid
 					if(W_check==true) {
-						if(PlayerArray[row-1][column] == emptySpace 
-								&& PlayerArray[row-2][column] == emptySpace 
-								&& PlayerArray[row+1][column] == 1) {
-							PlayerArray[row-2][column] = playerBlock; // Moves player
-							PlayerArray[row][column] = emptySpace; // Sets previous space as empty
+						if(PlayerArray[row-1][column] == 0 && PlayerArray[row-2][column] == 0 && PlayerArray[row+1][column] == 1) {
+							PlayerArray[row-2][column] = 3; // Moves player
+							PlayerArray[row][column] = 0; // Sets previous space as empty
 							
 							playRow = row - 2;
 							playCol = column;
 							try {
 								Thread.sleep(10);
 							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-							
-							
-							W_check = false;
-						}else {
-							W_check = false;
 						}
-						//System.out.println("W pressed");
+						W_check = false;
 					}
 					try {
 						Thread.sleep(100);
-						if(PlayerArray[row+1][column]!=groundBlock 
-								&& A_check == false && D_check == false) {
+						if(PlayerArray[row+1][column]!=1 && A_check == false && D_check == false) {
 							if(playRow == row && playCol == column) {
-								PlayerArray[row+2][column] = playerBlock; // Moves player
-								PlayerArray[row][column] = emptySpace;
+								PlayerArray[row+2][column] = 3; // Moves player
+								PlayerArray[row][column] = 0;
 							}
 							
 						}
@@ -112,32 +108,39 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 						A_check = false;
 						D_check = false;
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+				}
+			}
+		}
+	}
+	
+	public void eValidPress() {// Checks to see if the e press is valid or not.
+		for(int row = 0; row < PlayerArray.length; row++) {  // This for loop with go through the maps horizontally
+			for (int column = 0; column < PlayerArray[row].length; column++) { // This for loop will go through the map vertically
+				if (PlayerArray[row][column] == 3) {  // This if statement is trying to find the location of the player on the grid
 					if(E_check == true) {
-						if(PlayerArray[row][column +1 ]==star 
-								|| PlayerArray[row][column-1] == star) {
+						if(PlayerArray[row][column +1 ]==5 || PlayerArray[row][column-1] == 5) {
 							//System.out.println("Victory");
 							E_check = false;
-							if(PlayerArray[row][column +1 ]==star) {
-								PlayerArray[row][column +1 ] = emptySpace;
+							if(PlayerArray[row][column +1 ]==5) {
+								PlayerArray[row][column +1 ] = 0;
 								for(int row1 = 0; row1 < PlayerArray.length; row1++) {  // This for loop with go through the maps horizontally
 									for (int column1 = 0; column1 < PlayerArray[row1].length; column1++) {
-										if(PlayerArray[row1][column1] == starCount) {
-											PlayerArray[row1][column1] = star;
+										if(PlayerArray[row1][column1] == 6) {
+											PlayerArray[row1][column1] = 5;
 											break;
 										}
 									}
 								}
 								
 							}
-							if(PlayerArray[row][column -1 ]==star) {
-								PlayerArray[row][column -1 ] = emptySpace;
+							if(PlayerArray[row][column -1 ]==5) {
+								PlayerArray[row][column -1 ] = 0;
 								for(int row1 = 0; row1 < PlayerArray.length; row1++) {  // This for loop with go through the maps horizontally
 									for (int column1 = 0; column1 < PlayerArray[row1].length; column1++) {
-										if(PlayerArray[row1][column1] == starCount) {
-											PlayerArray[row1][column1] = star;
+										if(PlayerArray[row1][column1] == 6) {
+											PlayerArray[row1][column1] = 5;
 											break;
 										}
 									}
@@ -146,21 +149,43 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 							}
 						}
 					}
-			        
-					
 				}
 			}
 		}
 	}
 	
+	public void updateGrid() {
+		aValidMove();
+		dValidMove();
+		wValidMove();
+		eValidPress();
+	}
+	
 	public int[][] playerMain() {
 		updateGrid(); // Creates updated copy of the Grid
+		
+		/* The purpose of the commented out code is to print out the updated grids for testing */
+		 
+		
+		String output = "";
+		for (int row = 0; row < PlayerArray.length; row++) {
+			for (int column = 0; column < PlayerArray[row].length; column++) {
+				output = output + (PlayerArray[row][column]) + ", ";
+			}
+			output = output + '\n';
+		}
+		
+		/*
+		System.out.println(output);
+		*/
+		
+		
 		return PlayerArray; // Returns the updated grid copy
 	}
 	public int[] getPlayerLocation(int[][] Player_Array){
 		for(int row = 0; row < Player_Array.length; row++) {
 			for(int column = 0; column <Player_Array.length; column++) {
-				if(Player_Array[row][column] == playerBlock) {
+				if(Player_Array[row][column] == 3) {
 					int[] playerloc = {row,column};
 					return playerloc;
 					}
@@ -168,9 +193,7 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 			}
 		return null;
 		}
-	// checks key presses
-	// 1 parameter KeyEvent
-	// Checks key press then updates the Key variables
+	@Override
 	public void handle(KeyEvent event) {
 		switch (event.getCode()) {
 		case A: A_check = true; playerMain(); break; // In the situation that the A key has been pressed.
@@ -181,11 +204,11 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 			break; 
 		}
 	}
-	// loops through the first row of the grid then checks if there are 3 stars collected then returns true.
 	public boolean checkVictory() {
 		int counter = 0;
+
 			for (int column = 0; column < PlayerArray[0].length; column++) { // This for loop will go through the map vertically
-				if(PlayerArray[0][column]==star) {
+				if(PlayerArray[0][column]==5) {
 					counter +=1;
 				}
 				if(counter == 3) {
@@ -194,5 +217,6 @@ public class Player extends Game implements EventHandler<KeyEvent> {
 				}
 			}	
 	return false;
+
 	}
 }
